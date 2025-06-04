@@ -72,14 +72,18 @@ function App() {
   return (
     <div className="App">
       <h1>Lista de Tareas</h1>
-      {/* Formulario para agregar o editar */}
-      <TaskForm
-        onSubmit={handleSubmit}
-        editingTask={editingTask}
-        onCancel={handleCancel}
-      />
-      {/* Lista de tareas */}
-      <TaskList tasks={tasks} onEdit={handleEdit} onDelete={deleteTask} />
+      <div className="main-content">
+        <div className="form-section">
+          <TaskForm
+            onSubmit={handleSubmit}
+            editingTask={editingTask}
+            onCancel={handleCancel}
+          />
+        </div>
+        <div className="list-section">
+          <TaskList tasks={tasks} onEdit={handleEdit} onDelete={deleteTask} />
+        </div>
+      </div>
     </div>
   );
 }

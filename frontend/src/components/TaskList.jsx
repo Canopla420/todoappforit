@@ -11,11 +11,11 @@ const TaskList = ({ tasks, onEdit, onDelete }) => {
           {/* Muestro el título de la tarea */}
           <strong>{task.title}</strong>
           {/* Muestro la descripción si existe */}
-          {task.description && (
-            <div style={{ fontStyle: "italic", color: "#555" }}>
-              {task.description}
+            {task.description && (
+            <div className="description">
+                {task.description}
             </div>
-          )}
+            )}
           {/* Botón para editar */}
           <button onClick={() => onEdit(task)}>Editar</button>
           {/* Botón para eliminar */}
