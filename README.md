@@ -76,7 +76,6 @@ todoappforit/
 
 ## 🖼️ Capturas de pantalla
 
-Agrega aquí capturas de tu app funcionando:
 
 ![Lista de tareas](./captura1.png)
 ![Formulario de tarea](./captura2.png)
