@@ -20,22 +20,22 @@ function App() {
   }, []);
 
   // Crear una nueva tarea
-  const addTask = (title) => {
+  const addTask = (title, description) => {
     fetch(`${API_URL}/tasks`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title }),
+      body: JSON.stringify({ title, description }),
     })
       .then((res) => res.json())
       .then((newTask) => setTasks([...tasks, newTask]));
   };
 
   // Actualizar una tarea existente
-  const updateTask = (title) => {
+  const updateTask = (title, description) => {
     fetch(`${API_URL}/tasks/${editingTask.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title }),
+      body: JSON.stringify({ title, description }),
     })
       .then((res) => res.json())
       .then((updatedTask) => {
@@ -51,12 +51,11 @@ function App() {
     });
   };
 
-  // Cuando hago submit en el formulario
-  const handleSubmit = (title) => {
+  const handleSubmit = (title, description) => {
     if (editingTask) {
-      updateTask(title);
+      updateTask(title, description);
     } else {
-      addTask(title);
+      addTask(title, description);
     }
   };
 

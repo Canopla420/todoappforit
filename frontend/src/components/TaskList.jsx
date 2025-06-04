@@ -9,7 +9,13 @@ const TaskList = ({ tasks, onEdit, onDelete }) => {
         // Uso el id como key
         <li key={task.id}>
           {/* Muestro el título de la tarea */}
-          {task.title}
+          <strong>{task.title}</strong>
+          {/* Muestro la descripción si existe */}
+          {task.description && (
+            <div style={{ fontStyle: "italic", color: "#555" }}>
+              {task.description}
+            </div>
+          )}
           {/* Botón para editar */}
           <button onClick={() => onEdit(task)}>Editar</button>
           {/* Botón para eliminar */}

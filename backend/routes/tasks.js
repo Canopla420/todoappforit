@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { v4: uuidv4 } = require('uuid'); 
 
 let tasks = [];
 let nextId = 1;
@@ -11,9 +12,15 @@ router.get('/', (req, res) => {
 
 // Crear nueva tarea
 router.post('/', (req, res) => {
-  const { title } = req.body;
+  const { title, description } = req.body;
   if (!title) return res.status(400).json({ error: 'El título es requerido' });
-  const newTask = { id: nextId++, title, completed: false };
+  const newTask = {
+    id: uuidv4(), // id como string único
+    title,
+    description: description || '', // permite vacío
+    completed: false,
+    createdAt: new Date()
+  };
   tasks.push(newTask);
   res.status(201).json(newTask);
 });
